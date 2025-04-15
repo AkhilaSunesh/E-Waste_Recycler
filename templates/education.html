@@ -1,0 +1,461 @@
+{% extends 'layout.html' %}
+
+{% block title %}Education{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">E-Waste Education</h1>
+            <p class="lead">
+                Learn about the importance of proper electronic waste management and the environmental impact of e-waste.
+            </p>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="row mb-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">What is E-Waste?</h2>
+                    <p>
+                        Electronic waste, or e-waste, refers to discarded electronic devices and equipment such as computers, smartphones, televisions, and other electronic products at the end of their useful life.
+                    </p>
+                    <p>
+                        E-waste is one of the fastest-growing waste streams globally, with an estimated 50 million tons generated each year. This number is expected to increase as technology continues to advance and more people gain access to electronic devices.
+                    </p>
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Did you know?</strong> Only about 20% of global e-waste is formally recycled, with the rest ending up in landfills or being improperly processed.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-table me-2"></i> E-Waste by the Numbers</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Global e-waste produced annually
+                            <span class="badge bg-primary rounded-pill">50+ million tons</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Average e-waste per person (USA)
+                            <span class="badge bg-primary rounded-pill">20 kg</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Formally recycled e-waste
+                            <span class="badge bg-danger rounded-pill">Only 20%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            E-waste growth rate
+                            <span class="badge bg-warning text-dark rounded-pill">3-5% annually</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Environmental Impact Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">Environmental Impact of E-Waste</h2>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-skull-crossbones me-2"></i> Toxic Materials</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Electronics contain various toxic materials that can be harmful to the environment and human health when improperly disposed of:
+                    </p>
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Material</th>
+                                <th>Found In</th>
+                                <th>Potential Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lead</td>
+                                <td>CRT screens, batteries, circuit boards</td>
+                                <td>Damages nervous system, affects brain development</td>
+                            </tr>
+                            <tr>
+                                <td>Mercury</td>
+                                <td>Flat-screen displays, switches</td>
+                                <td>Damages brain, kidneys, and developing fetuses</td>
+                            </tr>
+                            <tr>
+                                <td>Cadmium</td>
+                                <td>Rechargeable batteries, circuit boards</td>
+                                <td>Accumulates in kidneys, damages filtration</td>
+                            </tr>
+                            <tr>
+                                <td>Brominated Flame Retardants</td>
+                                <td>Plastic casings, cables</td>
+                                <td>Disrupt hormone systems, potentially cause cancer</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4>Environmental Consequences</h4>
+                    <p>
+                        When e-waste is improperly disposed of, these toxic materials can:
+                    </p>
+                    <ul>
+                        <li>Leach into soil, contaminating groundwater and agricultural land</li>
+                        <li>Enter water systems, affecting aquatic life and potentially human water supplies</li>
+                        <li>Release toxic fumes when burned, contributing to air pollution</li>
+                        <li>Bioaccumulate in animals and humans, causing long-term health issues</li>
+                    </ul>
+                    
+                    <h4 class="mt-4">Climate Impact</h4>
+                    <p>
+                        Improper e-waste management also contributes to climate change:
+                    </p>
+                    <ul>
+                        <li>Releasing greenhouse gases from certain components</li>
+                        <li>Requiring more raw material extraction for new devices</li>
+                        <li>Increasing energy consumption for manufacturing new products</li>
+                    </ul>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Note:</strong> Proper recycling of one million laptops can save energy equivalent to the electricity used by 3,500 homes in a year.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits of Recycling Section -->
+    <div class="row mb-5">
+        <div class="col-12 mb-4">
+            <h2>Benefits of Proper E-Waste Recycling</h2>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-tree text-success fa-4x mb-3"></i>
+                    <h4>Environmental Protection</h4>
+                    <p>
+                        Prevents toxic substances from entering the environment, reducing pollution and protecting ecosystems.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-recycle text-primary fa-4x mb-3"></i>
+                    <h4>Resource Conservation</h4>
+                    <p>
+                        Recovers valuable materials like gold, silver, copper, and rare earth elements, reducing the need for mining.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-industry text-secondary fa-4x mb-3"></i>
+                    <h4>Economic Opportunities</h4>
+                    <p>
+                        Creates jobs in the recycling industry and reduces manufacturing costs through material recovery.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-medal me-2"></i> Recoverable Materials in E-Waste</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Valuable Metals</h5>
+                            <ul>
+                                <li><strong>Gold:</strong> Used in circuit boards, connectors</li>
+                                <li><strong>Silver:</strong> Used in switches, contacts, circuit boards</li>
+                                <li><strong>Copper:</strong> Used in wiring, circuit boards</li>
+                                <li><strong>Aluminum:</strong> Used in casings, heat sinks</li>
+                                <li><strong>Palladium:</strong> Used in circuit boards, capacitors</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Other Recoverable Materials</h5>
+                            <ul>
+                                <li><strong>Plastics:</strong> Device casings, cable insulation</li>
+                                <li><strong>Glass:</strong> Screens, displays</li>
+                                <li><strong>Rare Earth Elements:</strong> Speakers, hard drives</li>
+                                <li><strong>Lithium:</strong> Batteries</li>
+                                <li><strong>Silicon:</strong> Chips, solar cells</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-success mt-3">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Did you know?</strong> One ton of circuit boards contains 40-800 times the amount of gold found in one ton of ore, and circuit boards in one ton of cell phones contain about 350g of gold.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Security Section -->
+    <div class="row mb-5">
+        <div class="col-12 mb-4">
+            <h2>Data Security and E-Waste</h2>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-lock me-2"></i> Why Data Security Matters</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Electronic devices often contain sensitive personal or business information that can remain accessible even after standard deletion:
+                    </p>
+                    <ul>
+                        <li>Personal information (names, addresses, birth dates)</li>
+                        <li>Financial data (credit card numbers, bank account information)</li>
+                        <li>Passwords and account credentials</li>
+                        <li>Photos, videos, and personal communications</li>
+                        <li>Business information and intellectual property</li>
+                    </ul>
+                    <p>
+                        Simply deleting files or performing a factory reset is often not enough to permanently remove data. Special secure deletion methods are needed to ensure data cannot be recovered.
+                    </p>
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        <strong>Warning:</strong> Identity theft, financial fraud, and privacy breaches can result from improper data sanitization before recycling electronics.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i> Secure Data Deletion Methods</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Before recycling any electronic device, ensure your data is securely deleted:
+                    </p>
+                    <div class="list-group">
+                        <a href="{{ url_for('secure_deletion') }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><i class="fas fa-eraser me-2"></i> Secure File Deletion</h5>
+                            </div>
+                            <p class="mb-1">Overwrite files multiple times to prevent recovery</p>
+                        </a>
+                        <a href="{{ url_for('secure_deletion') }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><i class="fas fa-key me-2"></i> Encryption</h5>
+                            </div>
+                            <p class="mb-1">Encrypt device before standard deletion</p>
+                        </a>
+                        <a href="{{ url_for('secure_deletion') }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><i class="fas fa-hammer me-2"></i> Physical Destruction</h5>
+                            </div>
+                            <p class="mb-1">For highly sensitive data, physical destruction may be necessary</p>
+                        </a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('secure_deletion') }}" class="btn btn-primary">
+                            <i class="fas fa-trash-alt me-2"></i> Try Our Secure Deletion Tool
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsible Disposal Section -->
+    <div class="row mb-5">
+        <div class="col-12 mb-4">
+            <h2>Responsible E-Waste Disposal</h2>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-check-circle me-2"></i> Do's</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-check text-success me-3 mt-1"></i>
+                            <div>
+                                <strong>Back up important data</strong> before wiping your device
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-check text-success me-3 mt-1"></i>
+                            <div>
+                                <strong>Securely delete all personal data</strong> using proper methods
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-check text-success me-3 mt-1"></i>
+                            <div>
+                                <strong>Remove batteries</strong> when possible (they often need special recycling)
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-check text-success me-3 mt-1"></i>
+                            <div>
+                                <strong>Take devices to certified e-waste recyclers</strong> or manufacturer take-back programs
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-check text-success me-3 mt-1"></i>
+                            <div>
+                                <strong>Consider donation</strong> for working devices (after secure data deletion)
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-check text-success me-3 mt-1"></i>
+                            <div>
+                                <strong>Ask for a certificate of recycling</strong> for business devices or sensitive equipment
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0"><i class="fas fa-times-circle me-2"></i> Don'ts</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-times text-danger me-3 mt-1"></i>
+                            <div>
+                                <strong>Don't throw electronics in regular trash</strong> - it's illegal in many areas
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-times text-danger me-3 mt-1"></i>
+                            <div>
+                                <strong>Don't store old electronics indefinitely</strong> - recycle them properly
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-times text-danger me-3 mt-1"></i>
+                            <div>
+                                <strong>Don't recycle devices without wiping data</strong> - identity theft is a real risk
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-times text-danger me-3 mt-1"></i>
+                            <div>
+                                <strong>Don't attempt to dismantle devices yourself</strong> unless you have proper training
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-times text-danger me-3 mt-1"></i>
+                            <div>
+                                <strong>Don't use uncertified recyclers</strong> who may not follow proper environmental practices
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex">
+                            <i class="fas fa-times text-danger me-3 mt-1"></i>
+                            <div>
+                                <strong>Don't ignore batteries</strong> - they can cause fires if improperly disposed of
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Find Responsible Recycling Options</h4>
+                    <p>
+                        There are several options for responsible e-waste disposal:
+                    </p>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-map-marker-alt text-danger me-2"></i> Certified Recyclers</h5>
+                                    <p>Look for e-Stewards or R2 certified recycling facilities that follow strict environmental standards.</p>
+                                    <a href="{{ url_for('recycling_centers') }}" class="btn btn-sm btn-outline-primary">Find Recycling Centers</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-store text-primary me-2"></i> Retailer Take-Back</h5>
+                                    <p>Many electronics retailers offer recycling programs, including Best Buy, Staples, and Apple.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-hands-helping text-success me-2"></i> Manufacturer Programs</h5>
+                                    <p>Check if your device manufacturer offers a take-back or trade-in program for old devices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center py-4">
+                    <h3 class="mb-3">Ready to Responsibly Recycle Your Electronics?</h3>
+                    <p class="lead">
+                        Secure your data, find a recycling center, and make a positive environmental impact.
+                    </p>
+                    <div class="mt-4">
+                        <a href="{{ url_for('secure_deletion') }}" class="btn btn-light btn-lg me-3">
+                            <i class="fas fa-eraser me-2"></i> Secure Your Data
+                        </a>
+                        <a href="{{ url_for('recycling_centers') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

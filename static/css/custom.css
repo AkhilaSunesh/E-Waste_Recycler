@@ -1,0 +1,175 @@
+/* Custom CSS for the E-Waste Recycler application */
+
+/* Ensure dark theme styles are applied throughout */
+[data-bs-theme=dark] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #dee2e6;
+}
+
+/* Utility class for text truncation */
+.text-truncate-custom {
+    white-space: nowrap;
+    overflow: hidden;
+    text-ellipsis: ellipsis;
+}
+
+/* Map styles */
+#map {
+    height: 500px;
+    z-index: 1;
+}
+
+/* Custom marker styles for the map */
+.user-location-marker i {
+    color: #0d6efd;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+.center-marker i {
+    color: #198754;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Active state for recycling center cards */
+.center-card.active {
+    border-color: var(--bs-primary);
+    border-width: 2px;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Secure deletion method card styles */
+.method-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.method-card.selected {
+    border: 2px solid var(--bs-primary);
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Certificate styles */
+#certificate-content {
+    background-color: #ffffff;
+    color: #212529;
+    position: relative;
+    padding: 2rem;
+}
+
+#qrcode img {
+    background-color: white;
+}
+
+/* Custom scrollbar for file list and center list */
+.center-list, #file-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--bs-secondary) var(--bs-dark);
+}
+
+.center-list::-webkit-scrollbar, #file-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.center-list::-webkit-scrollbar-track, #file-list::-webkit-scrollbar-track {
+    background: var(--bs-dark);
+}
+
+.center-list::-webkit-scrollbar-thumb, #file-list::-webkit-scrollbar-thumb {
+    background-color: var(--bs-secondary);
+    border-radius: 20px;
+}
+
+/* Educational page timeline styling */
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--bs-primary);
+}
+
+.timeline-item:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--bs-primary);
+}
+
+/* Guide page styles */
+.accordion-button:not(.collapsed) {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: var(--bs-primary);
+}
+
+/* Step numbers for how it works section */
+.step-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--bs-primary);
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* Print styles for certificate */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    #certificate-content, #certificate-content * {
+        visibility: visible;
+    }
+    
+    #certificate-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* Smaller maps on mobile */
+    #map {
+        height: 300px;
+    }
+    
+    /* Adjust padding for mobile */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* Full width buttons on mobile */
+    .btn-responsive {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

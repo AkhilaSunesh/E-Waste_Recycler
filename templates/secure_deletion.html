@@ -1,0 +1,402 @@
+{% extends 'layout.html' %}
+
+{% block title %}Secure Deletion{% endblock %}
+
+{% block styles %}
+<style>
+    .method-card.selected {
+        border: 2px solid var(--bs-primary);
+    }
+    #file-list {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">Secure Data Deletion</h1>
+            <p class="lead">
+                Permanently erase sensitive data from your devices using industry-standard secure deletion techniques.
+            </p>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Note:</strong> This is a web simulation of secure deletion. In a real implementation, this would be part of a desktop application that can access your file system directly. For security reasons, web browsers cannot delete files on your device.
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Step-by-step secure deletion process -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-tasks me-2"></i> Secure Deletion Process</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Step progress indicator -->
+                    <div class="progress mb-4" style="height: 30px;">
+                        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Step 1 of 4</div>
+                    </div>
+
+                    <!-- Step 1: Select device type -->
+                    <div id="step-1" class="step-content">
+                        <h4>Step 1: Select Device Type</h4>
+                        <p>Choose the type of device you're preparing for deletion/recycling:</p>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input device-type" type="radio" name="deviceType" id="deviceComputer" value="Computer" checked>
+                                    <label class="form-check-label" for="deviceComputer">
+                                        <i class="fas fa-desktop me-2"></i> Computer/Laptop
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input device-type" type="radio" name="deviceType" id="devicePhone" value="Smartphone">
+                                    <label class="form-check-label" for="devicePhone">
+                                        <i class="fas fa-mobile-alt me-2"></i> Smartphone
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input device-type" type="radio" name="deviceType" id="deviceTablet" value="Tablet">
+                                    <label class="form-check-label" for="deviceTablet">
+                                        <i class="fas fa-tablet-alt me-2"></i> Tablet
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input device-type" type="radio" name="deviceType" id="deviceExternalDrive" value="External Drive">
+                                    <label class="form-check-label" for="deviceExternalDrive">
+                                        <i class="fas fa-hdd me-2"></i> External Drive
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input device-type" type="radio" name="deviceType" id="deviceUSB" value="USB Flash Drive">
+                                    <label class="form-check-label" for="deviceUSB">
+                                        <i class="fas fa-usb me-2"></i> USB Flash Drive
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input device-type" type="radio" name="deviceType" id="deviceOther" value="Other">
+                                    <label class="form-check-label" for="deviceOther">
+                                        <i class="fas fa-microchip me-2"></i> Other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-end">
+                            <button id="btn-step1-next" class="btn btn-primary">Next <i class="fas fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Select files/folders -->
+                    <div id="step-2" class="step-content d-none">
+                        <h4>Step 2: Select Files/Folders</h4>
+                        <p>Choose the files or folders you want to securely delete:</p>
+                        
+                        <div class="mb-3">
+                            <button id="btn-add-files" class="btn btn-outline-secondary me-2">
+                                <i class="fas fa-file me-2"></i> Add Files
+                            </button>
+                            <button id="btn-add-folder" class="btn btn-outline-secondary">
+                                <i class="fas fa-folder me-2"></i> Add Folder
+                            </button>
+                        </div>
+                        
+                        <div class="card mb-3">
+                            <div class="card-header bg-secondary text-white">
+                                <h6 class="mb-0">Selected Files/Folders</h6>
+                            </div>
+                            <div class="card-body">
+                                <ul id="file-list" class="list-group">
+                                    <li class="list-group-item text-center text-muted">
+                                        <i class="fas fa-info-circle me-2"></i> No files/folders selected
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 d-flex justify-content-between">
+                            <button id="btn-step2-prev" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i> Previous
+                            </button>
+                            <button id="btn-step2-next" class="btn btn-primary">
+                                Next <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Choose deletion method -->
+                    <div id="step-3" class="step-content d-none">
+                        <h4>Step 3: Choose Deletion Method</h4>
+                        <p>Select a secure deletion method based on your security requirements:</p>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 method-card" data-method="standard" data-passes="1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-eraser me-2 text-primary"></i> Standard Overwrite
+                                        </h5>
+                                        <p class="card-text">Single-pass zero overwrite. Fast and suitable for most personal data.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-success">Fast</span>
+                                            <span class="text-muted">1 pass</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 method-card" data-method="dod" data-passes="3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-shield-alt me-2 text-warning"></i> DoD 5220.22-M
+                                        </h5>
+                                        <p class="card-text">U.S. Department of Defense standard, overwrites with three specific patterns.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-warning text-dark">Medium</span>
+                                            <span class="text-muted">3 passes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 method-card" data-method="gutmann" data-passes="35">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-lock me-2 text-danger"></i> Gutmann Method
+                                        </h5>
+                                        <p class="card-text">Very thorough 35-pass overwrite, extremely secure but time-consuming.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-danger">Slow</span>
+                                            <span class="text-muted">35 passes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100 method-card" data-method="random" data-passes="3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-random me-2 text-info"></i> Random Overwrite
+                                        </h5>
+                                        <p class="card-text">Multiple pass random data overwrite, customizable passes.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge bg-info">Custom</span>
+                                            <div class="input-group input-group-sm" style="max-width: 100px;">
+                                                <span class="input-group-text">Passes</span>
+                                                <input type="number" class="form-control" id="random-passes" min="1" max="100" value="3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 d-flex justify-content-between">
+                            <button id="btn-step3-prev" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i> Previous
+                            </button>
+                            <button id="btn-step3-next" class="btn btn-primary">
+                                Next <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Confirm and delete -->
+                    <div id="step-4" class="step-content d-none">
+                        <h4>Step 4: Review and Confirm</h4>
+                        <p>Please review your selections and confirm to start the secure deletion process:</p>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Device Type:</th>
+                                            <td id="summary-device-type">Computer/Laptop</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Selected Items:</th>
+                                            <td id="summary-file-count">0 files/folders</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Deletion Method:</th>
+                                            <td id="summary-method">Standard Overwrite (1 pass)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="confirmDeletion">
+                            <label class="form-check-label" for="confirmDeletion">
+                                I understand that this process will permanently delete the selected files and the data cannot be recovered.
+                            </label>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="confirmBackup">
+                            <label class="form-check-label" for="confirmBackup">
+                                I confirm that I have backed up any important data before proceeding with secure deletion.
+                            </label>
+                        </div>
+                        
+                        <div class="mt-4 d-flex justify-content-between">
+                            <button id="btn-step4-prev" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i> Previous
+                            </button>
+                            <button id="btn-delete" class="btn btn-danger" disabled>
+                                <i class="fas fa-trash-alt me-2"></i> Securely Delete
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Deletion progress (hidden initially) -->
+                    <div id="deletion-progress" class="d-none">
+                        <h4>Secure Deletion in Progress</h4>
+                        <p>Please do not close this window while the deletion is in progress.</p>
+                        
+                        <div class="progress mb-3" style="height: 25px;">
+                            <div id="deletion-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                        
+                        <div id="deletion-status" class="text-center mb-3">
+                            <span class="badge bg-info">Initializing...</span>
+                        </div>
+                        
+                        <div id="current-file" class="text-muted small"></div>
+                    </div>
+
+                    <!-- Deletion complete (hidden initially) -->
+                    <div id="deletion-complete" class="d-none">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                            <h4 class="mt-3">Secure Deletion Complete!</h4>
+                            <p>Your data has been permanently erased using the selected secure deletion method.</p>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">Certificate of Secure Deletion</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>A certificate has been generated as proof of secure deletion.</p>
+                                <div class="d-flex justify-content-center">
+                                    <a id="view-certificate" href="#" class="btn btn-outline-primary me-2">
+                                        <i class="fas fa-eye me-2"></i> View Certificate
+                                    </a>
+                                    <a id="download-certificate" href="#" class="btn btn-outline-success">
+                                        <i class="fas fa-download me-2"></i> Download Certificate
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">Next Steps</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Now that your data has been securely deleted, you can:</p>
+                                <ul>
+                                    <li>Find a recycling center near you to properly dispose of your device</li>
+                                    <li>Start a new secure deletion process for another device</li>
+                                </ul>
+                                <div class="d-flex justify-content-center mt-3">
+                                    <a href="{{ url_for('recycling_centers') }}" class="btn btn-outline-info me-2">
+                                        <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                                    </a>
+                                    <button id="btn-new-deletion" class="btn btn-outline-primary">
+                                        <i class="fas fa-redo me-2"></i> New Deletion
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <!-- Information sidebar -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i> Why Secure Deletion?</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        When you normally delete a file, only the reference to the file is removed, but the data remains on your storage device until it's overwritten.
+                    </p>
+                    <p>
+                        Secure deletion overwrites the data multiple times to ensure it cannot be recovered, even with specialized recovery tools.
+                    </p>
+                    <a href="{{ url_for('education') }}" class="btn btn-outline-info btn-sm">
+                        <i class="fas fa-book me-2"></i> Learn More
+                    </a>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i> Important Notice</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="mb-0">
+                        <li>Always back up important data before deletion</li>
+                        <li>Once securely deleted, data cannot be recovered</li>
+                        <li>For solid-state drives (SSDs), some secure deletion methods may be less effective due to wear leveling</li>
+                        <li>For maximum security on SSDs, consider using built-in secure erase commands or encryption</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-question-circle me-2"></i> Need Help?</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Not sure which deletion method to choose? Here's a quick guide:
+                    </p>
+                    <ul class="mb-0">
+                        <li><strong>Standard:</strong> Everyday personal data</li>
+                        <li><strong>DoD:</strong> Sensitive business/personal data</li>
+                        <li><strong>Gutmann:</strong> Highly confidential information</li>
+                        <li><strong>Random:</strong> Custom security needs</li>
+                    </ul>
+                    <hr>
+                    <a href="{{ url_for('guide') }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-clipboard-list me-2"></i> View Step-by-Step Guide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/secure_deletion.js') }}"></script>
+{% endblock %}

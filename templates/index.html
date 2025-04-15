@@ -1,0 +1,149 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center py-5">
+        <div class="col-md-6">
+            <h1 class="display-4 fw-bold">Secure Data Deletion & E-Waste Recycling</h1>
+            <p class="lead">
+                Protect your privacy by securely erasing data from your old electronic devices and find responsible recycling centers near you.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{{ url_for('secure_deletion') }}" class="btn btn-primary btn-lg px-4 me-md-2">
+                    <i class="fas fa-eraser me-2"></i> Secure Delete
+                </a>
+                <a href="{{ url_for('recycling_centers') }}" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <!-- Hero image using SVG for sustainability theme -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 600 400" class="img-fluid">
+                <rect width="600" height="400" fill="#212529" />
+                <path d="M300,350 C420,350 500,270 500,200 C500,130 420,50 300,50 C180,50 100,130 100,200 C100,270 180,350 300,350 Z" fill="#2b3035" />
+                <path d="M280,120 L250,200 L280,200 L250,280" stroke="#28a745" stroke-width="20" fill="none" />
+                <path d="M320,120 L350,200 L320,200 L350,280" stroke="#28a745" stroke-width="20" fill="none" />
+                <path d="M250,160 L350,160" stroke="#28a745" stroke-width="20" fill="none" />
+                <circle cx="250" cy="120" r="20" fill="#0d6efd" />
+                <circle cx="350" cy="120" r="20" fill="#0d6efd" />
+                <circle cx="250" cy="280" r="20" fill="#0d6efd" />
+                <circle cx="350" cy="280" r="20" fill="#0d6efd" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Certificate Verification -->
+    <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-certificate me-2"></i> Verify Deletion Certificate</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('verify_certificate') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="certificate_id" class="form-label">Certificate ID</label>
+                            <input type="text" class="form-control" id="certificate_id" name="certificate_id" placeholder="Enter the certificate ID" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="verification_code" class="form-label">Verification Code</label>
+                            <input type="text" class="form-control" id="verification_code" name="verification_code" placeholder="Enter the verification code" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search me-2"></i> Verify Certificate
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5 pt-5">
+        <div class="col-12 text-center mb-4">
+            <h2>Our Features</h2>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-shield-alt fa-4x text-primary mb-3"></i>
+                    <h3 class="card-title">Secure Deletion</h3>
+                    <p class="card-text">
+                        Multiple secure deletion methods to permanently erase your data, preventing recovery even with specialized tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-certificate fa-4x text-success mb-3"></i>
+                    <h3 class="card-title">Deletion Certificates</h3>
+                    <p class="card-text">
+                        Get a verifiable certificate of secure deletion for your records or to provide to others.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-map-marked-alt fa-4x text-info mb-3"></i>
+                    <h3 class="card-title">Recycling Locator</h3>
+                    <p class="card-text">
+                        Find responsible e-waste recycling centers near you to properly dispose of your electronic devices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="row mt-5 pt-3">
+        <div class="col-12 text-center mb-4">
+            <h2>How It Works</h2>
+        </div>
+        
+        <div class="col-md-3 mb-4 text-center">
+            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px;">
+                <span class="display-4 text-white">1</span>
+            </div>
+            <h4>Prepare Your Device</h4>
+            <p>Back up important data and prepare your device for data deletion.</p>
+        </div>
+        
+        <div class="col-md-3 mb-4 text-center">
+            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px;">
+                <span class="display-4 text-white">2</span>
+            </div>
+            <h4>Select Files/Folders</h4>
+            <p>Select the files or folders you want to securely erase.</p>
+        </div>
+        
+        <div class="col-md-3 mb-4 text-center">
+            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px;">
+                <span class="display-4 text-white">3</span>
+            </div>
+            <h4>Choose Method</h4>
+            <p>Select the secure deletion method that matches your security requirements.</p>
+        </div>
+        
+        <div class="col-md-3 mb-4 text-center">
+            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 100px; height: 100px;">
+                <span class="display-4 text-white">4</span>
+            </div>
+            <h4>Get Certificate</h4>
+            <p>Receive a certificate of deletion and find nearby recycling centers.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

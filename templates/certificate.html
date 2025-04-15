@@ -1,0 +1,210 @@
+{% extends 'layout.html' %}
+
+{% block title %}Deletion Certificate{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Certificate</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0"><i class="fas fa-certificate me-2"></i> Certificate of Secure Data Deletion</h4>
+                        <div>
+                            <button id="btn-print-certificate" class="btn btn-sm btn-light me-2">
+                                <i class="fas fa-print me-1"></i> Print
+                            </button>
+                            <a href="{{ url_for('download_certificate', certificate_id=certificate.certificate_id) }}" class="btn btn-sm btn-light">
+                                <i class="fas fa-download me-1"></i> PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="certificate-content" class="border p-4 mb-4">
+                        <div class="text-center mb-4">
+                            <div class="mb-3">
+                                <!-- SVG logo for the certificate -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="#198754" />
+                                    <path d="M50,10 L50,90 M10,50 L90,50" stroke="#ffffff" stroke-width="8" />
+                                    <circle cx="50" cy="50" r="20" fill="#ffffff" />
+                                    <circle cx="50" cy="50" r="15" fill="#198754" />
+                                </svg>
+                            </div>
+                            <h2 class="mb-0">Certificate of Secure Data Deletion</h2>
+                            <p class="text-muted mb-0">E-Waste Recycler</p>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="alert alert-success">
+                                    This is to certify that data on the specified device has been securely deleted using industry-standard methods.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h5>Certificate Details</h5>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Certificate ID:</th>
+                                            <td>{{ certificate.certificate_id }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Issue Date:</th>
+                                            <td>{{ certificate.deletion_date.strftime('%Y-%m-%d') }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Verification Code:</th>
+                                            <td>{{ certificate.verification_code }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Deletion Information</h5>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Device Type:</th>
+                                            <td>{{ certificate.device_type }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Deletion Method:</th>
+                                            <td>{{ certificate.deletion_method }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Number of Passes:</th>
+                                            <td>{{ certificate.passes }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5>Verification</h5>
+                                <p>
+                                    This certificate can be verified online at:
+                                    <span class="fw-bold">https://ewaste-recycler.com/verify</span>
+                                </p>
+                                <p>
+                                    You will need both the Certificate ID and Verification Code shown above.
+                                </p>
+
+                                <!-- Example QR code (would be dynamically generated in a real app) -->
+                                <div class="text-center">
+                                    <div id="qrcode" class="d-inline-block border p-2 bg-white"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h5>About This Certificate</h5>
+                                <p>
+                                    This certificate confirms that the data on the specified device has been securely deleted using the method indicated. 
+                                    The secure deletion process makes data recovery extremely difficult or impossible, even with specialized forensic tools.
+                                </p>
+                                <p>
+                                    Secure deletion was performed according to industry best practices for the selected method.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="mb-0 fw-bold">E-Waste Recycler - Secure Data Deletion Service</p>
+                                <p class="small text-muted mb-0">Generated on {{ certificate.deletion_date.strftime('%Y-%m-%d %H:%M:%S UTC') }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Next Step:</strong> Find a responsible e-waste recycling center near you to properly dispose of your device.
+                        <div class="mt-2 text-center">
+                            <a href="{{ url_for('recycling_centers') }}" class="btn btn-info">
+                                <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i> About Certificates</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        This certificate serves as proof that your data has been securely deleted using the specified method.
+                    </p>
+                    <p>
+                        You can share this certificate with others to verify that sensitive data has been properly destroyed before recycling or transferring ownership of your device.
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        <i class="fas fa-lock me-2"></i>
+                        Each certificate has a unique verification code to prevent forgery.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-recycle me-2"></i> Ready to Recycle?</h5>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Now that your data has been securely deleted, your device is ready to be recycled responsibly.
+                    </p>
+                    <p>
+                        Use our recycling center locator to find the nearest e-waste collection point.
+                    </p>
+                    <a href="{{ url_for('recycling_centers') }}" class="btn btn-success w-100">
+                        <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/qrcode.js@1.0.0/qrcode.min.js"></script>
+<script src="{{ url_for('static', filename='js/certificate.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Generate QR code
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://ewaste-recycler.com/verify?id={{ certificate.certificate_id }}&code={{ certificate.verification_code }}",
+            width: 128,
+            height: 128
+        });
+        
+        // Print certificate button
+        document.getElementById('btn-print-certificate').addEventListener('click', function() {
+            window.print();
+        });
+    });
+</script>
+{% endblock %}

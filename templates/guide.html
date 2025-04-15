@@ -1,0 +1,746 @@
+{% extends 'layout.html' %}
+
+{% block title %}Step-by-Step Guide{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">Device Preparation Guide</h1>
+            <p class="lead">
+                Follow these comprehensive steps to properly prepare your electronic devices for recycling or disposal.
+            </p>
+        </div>
+    </div>
+
+    <!-- Step 1: Backup Data -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Step 1: Backup Your Data</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center mb-3 mb-md-0">
+                            <div class="bg-light p-4 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
+                                <i class="fas fa-cloud-upload-alt fa-5x text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Why Backup?</h4>
+                            <p>Before you securely delete data from your device, make sure to backup all important information. Once securely deleted, data cannot be recovered.</p>
+                            
+                            <h5 class="mt-4">Backup Options:</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="fas fa-cloud text-info me-2"></i> Cloud Storage</h6>
+                                            <ul class="mb-0">
+                                                <li>Google Drive, Dropbox, iCloud, OneDrive</li>
+                                                <li>Automatically syncs across devices</li>
+                                                <li>Typically requires subscription for large storage</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="fas fa-hdd text-secondary me-2"></i> External Hard Drive</h6>
+                                            <ul class="mb-0">
+                                                <li>One-time purchase, no subscription</li>
+                                                <li>Faster transfers for large amounts of data</li>
+                                                <li>Physical storage you control</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>Important:</strong> Verify your backup is complete and accessible before proceeding with data deletion.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 2: Device-Specific Preparation -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Step 2: Device-Specific Preparation</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <p>Different devices require different preparation steps. Select your device type below for specific instructions:</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <nav>
+                                <div class="nav nav-tabs" id="device-tab" role="tablist">
+                                    <button class="nav-link active" id="computer-tab" data-bs-toggle="tab" data-bs-target="#computer" type="button" role="tab" aria-controls="computer" aria-selected="true">
+                                        <i class="fas fa-desktop me-2"></i> Computers/Laptops
+                                    </button>
+                                    <button class="nav-link" id="smartphone-tab" data-bs-toggle="tab" data-bs-target="#smartphone" type="button" role="tab" aria-controls="smartphone" aria-selected="false">
+                                        <i class="fas fa-mobile-alt me-2"></i> Smartphones
+                                    </button>
+                                    <button class="nav-link" id="tablet-tab" data-bs-toggle="tab" data-bs-target="#tablet" type="button" role="tab" aria-controls="tablet" aria-selected="false">
+                                        <i class="fas fa-tablet-alt me-2"></i> Tablets
+                                    </button>
+                                    <button class="nav-link" id="storage-tab" data-bs-toggle="tab" data-bs-target="#storage" type="button" role="tab" aria-controls="storage" aria-selected="false">
+                                        <i class="fas fa-hdd me-2"></i> Storage Devices
+                                    </button>
+                                </div>
+                            </nav>
+                            <div class="tab-content p-3 border border-top-0 rounded-bottom" id="device-tab-content">
+                                <!-- Computers/Laptops Tab -->
+                                <div class="tab-pane fade show active" id="computer" role="tabpanel" aria-labelledby="computer-tab">
+                                    <h4 class="mb-3">Computer/Laptop Preparation</h4>
+                                    
+                                    <div class="accordion" id="computerAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Windows Computers
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#computerAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Sign out of all accounts</strong> (email, cloud services, browsers)</li>
+                                                        <li><strong>Deauthorize software</strong> that has limited installations</li>
+                                                        <li><strong>Back up your data</strong> to an external drive or cloud service</li>
+                                                        <li><strong>Use our secure deletion tool</strong> to wipe sensitive files</li>
+                                                        <li><strong>For full disk wiping:</strong>
+                                                            <ul>
+                                                                <li>Windows 10/11: Settings > Update & Security > Recovery > Reset this PC > Remove everything</li>
+                                                                <li>Select the option to "Remove files and clean the drive" for more thorough deletion</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For maximum security:</strong> Use third-party disk wiping tools like DBAN (Darik's Boot and Nuke) for HDDs</li>
+                                                        <li><strong>For SSDs:</strong> Use manufacturer's secure erase utility or the built-in Windows reset with drive cleaning</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwo">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Mac Computers
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#computerAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Sign out of all accounts</strong> (iCloud, App Store, Messages, etc.)</li>
+                                                        <li><strong>Deauthorize iTunes</strong> (if applicable): Account > Authorizations > Deauthorize This Computer</li>
+                                                        <li><strong>Back up important data</strong> using Time Machine or other backup methods</li>
+                                                        <li><strong>Disable Find My Mac</strong>: System Preferences > Apple ID > iCloud > Find My Mac</li>
+                                                        <li><strong>For macOS Monterey or newer:</strong>
+                                                            <ul>
+                                                                <li>System Preferences > Erase All Content and Settings</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For older macOS versions:</strong>
+                                                            <ul>
+                                                                <li>Restart and hold Command+R to enter Recovery Mode</li>
+                                                                <li>Use Disk Utility to erase the drive (select secure erase options if available)</li>
+                                                                <li>Reinstall macOS</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For T2 or M1/M2 Macs:</strong> The built-in erasure is already secure due to hardware encryption</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingThree">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    Linux Computers
+                                                </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#computerAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up important data</strong> to external storage</li>
+                                                        <li><strong>For secure deletion:</strong>
+                                                            <ul>
+                                                                <li>Use the <code>shred</code> command for individual files: <code>shred -vzn 3 filename</code></li>
+                                                                <li>For entire drives (for HDDs): <code>shred -vzn 3 /dev/sdX</code> (replace X with your drive letter)</li>
+                                                                <li>For SSDs, use <code>hdparm</code> with the secure erase command or the manufacturer's utilities</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Alternative tools:</strong> DBAN, secure-delete package (<code>srm</code>, <code>sfill</code>, etc.)</li>
+                                                        <li><strong>For encrypted drives:</strong> Simply wiping the encryption keys is usually sufficient</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-info mt-4">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>Note:</strong> For computers with solid-state drives (SSDs), traditional secure deletion methods may not be as effective due to wear leveling. Consider using built-in secure erase functions or full-disk encryption before standard deletion.
+                                    </div>
+                                </div>
+                                
+                                <!-- Smartphones Tab -->
+                                <div class="tab-pane fade" id="smartphone" role="tabpanel" aria-labelledby="smartphone-tab">
+                                    <h4 class="mb-3">Smartphone Preparation</h4>
+                                    
+                                    <div class="accordion" id="smartphoneAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingFour">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                                    Android Phones
+                                                </button>
+                                            </h2>
+                                            <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#smartphoneAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up important data</strong> using Google Backup or third-party apps</li>
+                                                        <li><strong>Remove SIM card and external storage</strong> (SD card if applicable)</li>
+                                                        <li><strong>Sign out of all accounts</strong>:
+                                                            <ul>
+                                                                <li>Settings > Accounts > Google (and other accounts) > Remove account</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Remove device from Google Find My Device</strong>:
+                                                            <ul>
+                                                                <li>Visit <a href="https://myaccount.google.com/find-your-phone" target="_blank">Find My Device</a> on another device</li>
+                                                                <li>Select your device and click "Remove device"</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Factory reset the device</strong>:
+                                                            <ul>
+                                                                <li>Settings > System > Reset options > Erase all data (factory reset)</li>
+                                                                <li>Select "Erase all data" and confirm with your PIN/pattern</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>After reset</strong>, verify that the device boots to the setup screen</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingFive">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                    iPhones
+                                                </button>
+                                            </h2>
+                                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#smartphoneAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up your data</strong> using iCloud or iTunes/Finder</li>
+                                                        <li><strong>Remove SIM card</strong></li>
+                                                        <li><strong>Sign out of iCloud and App Store</strong>:
+                                                            <ul>
+                                                                <li>Settings > [your name] > Sign Out</li>
+                                                                <li>Enter your Apple ID password and tap "Turn Off"</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Turn off Find My iPhone</strong>:
+                                                            <ul>
+                                                                <li>Settings > [your name] > Find My > Find My iPhone > toggle off</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Erase all content and settings</strong>:
+                                                            <ul>
+                                                                <li>Settings > General > Reset > Erase All Content and Settings</li>
+                                                                <li>Confirm with your passcode and Apple ID password if prompted</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>After reset</strong>, verify that the device shows the "Hello" setup screen</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingSix">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                                    Other Smartphones
+                                                </button>
+                                            </h2>
+                                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#smartphoneAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up important data</strong> following manufacturer instructions</li>
+                                                        <li><strong>Remove SIM card and external storage</strong></li>
+                                                        <li><strong>Sign out of all accounts</strong> (email, app stores, cloud services)</li>
+                                                        <li><strong>Disable any device finding services</strong></li>
+                                                        <li><strong>Perform a factory reset</strong>:
+                                                            <ul>
+                                                                <li>Usually found in Settings > System > Reset or similar path</li>
+                                                                <li>Follow on-screen instructions to complete the reset</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Verify reset</strong> by checking that device returns to initial setup screen</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-warning mt-4">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        <strong>Important:</strong> Modern smartphones typically encrypt their storage by default. A factory reset that removes the encryption keys is generally considered secure.
+                                    </div>
+                                </div>
+                                
+                                <!-- Tablets Tab -->
+                                <div class="tab-pane fade" id="tablet" role="tabpanel" aria-labelledby="tablet-tab">
+                                    <h4 class="mb-3">Tablet Preparation</h4>
+                                    
+                                    <div class="accordion" id="tabletAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingSeven">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                                    iPads
+                                                </button>
+                                            </h2>
+                                            <div id="collapseSeven" class="accordion-collapse collapse show" aria-labelledby="headingSeven" data-bs-parent="#tabletAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up your data</strong> using iCloud or iTunes/Finder</li>
+                                                        <li><strong>Remove SIM card</strong> (if cellular model)</li>
+                                                        <li><strong>Sign out of iCloud and App Store</strong>:
+                                                            <ul>
+                                                                <li>Settings > [your name] > Sign Out</li>
+                                                                <li>Enter your Apple ID password and tap "Turn Off"</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Turn off Find My iPad</strong>:
+                                                            <ul>
+                                                                <li>Settings > [your name] > Find My > Find My iPad > toggle off</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Erase all content and settings</strong>:
+                                                            <ul>
+                                                                <li>Settings > General > Reset > Erase All Content and Settings</li>
+                                                                <li>Confirm with your passcode and Apple ID password if prompted</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingEight">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                                    Android Tablets
+                                                </button>
+                                            </h2>
+                                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#tabletAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up important data</strong> using Google Backup or third-party apps</li>
+                                                        <li><strong>Remove SIM card and external storage</strong> (SD card if applicable)</li>
+                                                        <li><strong>Sign out of all accounts</strong>:
+                                                            <ul>
+                                                                <li>Settings > Accounts > Google (and other accounts) > Remove account</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Remove device from Google Find My Device</strong></li>
+                                                        <li><strong>Factory reset the device</strong>:
+                                                            <ul>
+                                                                <li>Settings > System > Reset options > Erase all data (factory reset)</li>
+                                                                <li>Select "Erase all data" and confirm with your PIN/pattern</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingNine">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                                    Windows Tablets
+                                                </button>
+                                            </h2>
+                                            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#tabletAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up important data</strong> to OneDrive or external storage</li>
+                                                        <li><strong>Sign out of all accounts</strong> (Microsoft account, email, apps)</li>
+                                                        <li><strong>Remove SIM card</strong> (if applicable)</li>
+                                                        <li><strong>Reset the device</strong>:
+                                                            <ul>
+                                                                <li>Settings > Update & Security > Recovery > Reset this PC</li>
+                                                                <li>Choose "Remove everything"</li>
+                                                                <li>Select "Remove files and clean the drive" for more thorough deletion</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Storage Devices Tab -->
+                                <div class="tab-pane fade" id="storage" role="tabpanel" aria-labelledby="storage-tab">
+                                    <h4 class="mb-3">Storage Device Preparation</h4>
+                                    
+                                    <div class="accordion" id="storageAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTen">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                                                    External Hard Drives
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTen" class="accordion-collapse collapse show" aria-labelledby="headingTen" data-bs-parent="#storageAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up any important data</strong> that you want to keep</li>
+                                                        <li><strong>For basic deletion:</strong>
+                                                            <ul>
+                                                                <li>Connect the drive to a computer</li>
+                                                                <li>Format the drive using your operating system's disk management tools</li>
+                                                                <li>On Windows: Right-click the drive > Format > Check "Quick Format" > Start</li>
+                                                                <li>On Mac: Disk Utility > Select drive > Erase > Choose format > Erase</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For secure deletion (HDDs):</strong>
+                                                            <ul>
+                                                                <li>Use our secure deletion tool for thorough data removal</li>
+                                                                <li>Or use specialized software like DBAN, Eraser, or similar tools</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For external SSDs:</strong>
+                                                            <ul>
+                                                                <li>Use the manufacturer's secure erase utility if available</li>
+                                                                <li>For encrypted drives, simply reset the encryption key</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingEleven">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                                    USB Flash Drives
+                                                </button>
+                                            </h2>
+                                            <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven" data-bs-parent="#storageAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up any important data</strong> that you wish to keep</li>
+                                                        <li><strong>For basic deletion:</strong>
+                                                            <ul>
+                                                                <li>Connect the drive to a computer</li>
+                                                                <li>Format the drive (as described above for external hard drives)</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For secure deletion:</strong>
+                                                            <ul>
+                                                                <li>Use our secure deletion tool</li>
+                                                                <li>Fill the drive with random data multiple times before formatting</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Note:</strong> USB flash drives use flash memory similar to SSDs, so traditional secure deletion methods may not remove all data due to wear leveling and over-provisioning</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwelve">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                                    Memory Cards (SD, microSD)
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve" data-bs-parent="#storageAccordion">
+                                                <div class="accordion-body">
+                                                    <ol>
+                                                        <li><strong>Back up important data</strong> you wish to keep</li>
+                                                        <li><strong>Connect the card to a computer</strong> using a card reader</li>
+                                                        <li><strong>For basic deletion:</strong>
+                                                            <ul>
+                                                                <li>Format the card using your operating system's tools</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>For more secure deletion:</strong>
+                                                            <ul>
+                                                                <li>Use our secure deletion tool with multiple overwrites</li>
+                                                                <li>Fill the card with random data before formatting</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><strong>Consider physical destruction</strong> for cards that contained highly sensitive data</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-danger mt-4">
+                                        <i class="fas fa-exclamation-circle me-2"></i>
+                                        <strong>For maximum security:</strong> If a storage device contained highly sensitive data and you want to ensure complete data destruction, consider physical destruction of the device after attempting secure deletion.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3: Secure Deletion -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Step 3: Secure Data Deletion</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Understanding Deletion Methods</h4>
+                            <p>
+                                When you normally delete a file, the operating system only removes the reference to the file, not the actual data. The data remains on the storage device until it's overwritten by new data.
+                            </p>
+                            <p>
+                                To ensure your data cannot be recovered, you need to use secure deletion methods that overwrite the data multiple times.
+                            </p>
+                            
+                            <div class="card mt-4">
+                                <div class="card-header bg-secondary text-white">
+                                    <h5 class="mb-0">Deletion Method Comparison</h5>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Method</th>
+                                                <th>Security Level</th>
+                                                <th>Speed</th>
+                                                <th>Best For</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Standard (1-pass)</td>
+                                                <td>Basic</td>
+                                                <td>Fast</td>
+                                                <td>Non-sensitive data</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DoD 5220.22-M (3-pass)</td>
+                                                <td>Medium</td>
+                                                <td>Moderate</td>
+                                                <td>Personal/business data</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Gutmann (35-pass)</td>
+                                                <td>Very High</td>
+                                                <td>Very Slow</td>
+                                                <td>Highly sensitive data</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Random (customizable)</td>
+                                                <td>Variable</td>
+                                                <td>Depends on passes</td>
+                                                <td>Customized needs</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h4>How to Securely Delete Data</h4>
+                            
+                            <div class="card mb-4">
+                                <div class="card-header bg-info text-white">
+                                    <h5 class="mb-0">Using Our Secure Deletion Tool</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        Our secure deletion tool makes it easy to permanently erase sensitive files:
+                                    </p>
+                                    <ol>
+                                        <li>Select your device type</li>
+                                        <li>Choose files or folders to delete</li>
+                                        <li>Select a deletion method based on your security needs</li>
+                                        <li>Confirm and start the secure deletion process</li>
+                                        <li>Receive a certificate of secure deletion</li>
+                                    </ol>
+                                    <div class="text-center mt-3">
+                                        <a href="{{ url_for('secure_deletion') }}" class="btn btn-primary">
+                                            <i class="fas fa-trash-alt me-2"></i> Use Secure Deletion Tool
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header bg-warning text-dark">
+                                    <h5 class="mb-0">Special Considerations</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6>Solid-State Drives (SSDs) and Flash Storage</h6>
+                                    <p>
+                                        Traditional secure deletion methods are less effective on SSDs and flash storage due to:
+                                    </p>
+                                    <ul>
+                                        <li><strong>Wear leveling</strong>: Redistributes writes to extend the drive's life</li>
+                                        <li><strong>Over-provisioning</strong>: Reserved space not accessible through normal means</li>
+                                        <li><strong>Garbage collection</strong>: Background process that may preserve data</li>
+                                    </ul>
+                                    <p>
+                                        <strong>For SSDs:</strong> Use the manufacturer's secure erase command, enable full-disk encryption before deletion, or use the built-in secure reset function in your operating system.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 4: Recycling Preparation -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">Step 4: Prepare for Recycling</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Final Checklist Before Recycling</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="check1">
+                                        <label class="form-check-label" for="check1">
+                                            All important data has been backed up
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="check2">
+                                        <label class="form-check-label" for="check2">
+                                            All accounts have been signed out
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="check3">
+                                        <label class="form-check-label" for="check3">
+                                            Device has been removed from find my device/phone services
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="check4">
+                                        <label class="form-check-label" for="check4">
+                                            All data has been securely deleted
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="check5">
+                                        <label class="form-check-label" for="check5">
+                                            All removable storage (SD cards, SIM cards) has been removed
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="check6">
+                                        <label class="form-check-label" for="check6">
+                                            Batteries have been removed (if applicable and safe to do so)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="check7">
+                                        <label class="form-check-label" for="check7">
+                                            Device has been factory reset or wiped
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Physical Preparation</h4>
+                            <ul class="list-group mb-4">
+                                <li class="list-group-item">
+                                    <i class="fas fa-battery-half text-warning me-2"></i>
+                                    <strong>Batteries:</strong> If easily removable, remove batteries as they may need to be recycled separately. Many recycling centers require this.
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-memory text-info me-2"></i>
+                                    <strong>Memory cards/SIM cards:</strong> Remove all memory cards, SIM cards, and other removable storage.
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-box text-success me-2"></i>
+                                    <strong>Packaging:</strong> If available, use original packaging for transport to prevent damage.
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-sticky-note text-primary me-2"></i>
+                                    <strong>Labeling:</strong> Consider labeling the device as "data wiped" or "ready for recycling."
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-file-alt text-secondary me-2"></i>
+                                    <strong>Documentation:</strong> Keep any certificates of secure deletion for your records.
+                                </li>
+                            </ul>
+                            
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <strong>Ready to Recycle?</strong> Find a responsible e-waste recycling center near you using our locator.
+                                <div class="text-center mt-3">
+                                    <a href="{{ url_for('recycling_centers') }}" class="btn btn-success">
+                                        <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center py-4">
+                    <h3 class="mb-3">Ready to Securely Delete Your Data?</h3>
+                    <p class="lead">
+                        Protect your privacy and prepare your device for responsible recycling.
+                    </p>
+                    <div class="mt-4">
+                        <a href="{{ url_for('secure_deletion') }}" class="btn btn-light btn-lg me-3">
+                            <i class="fas fa-eraser me-2"></i> Secure Deletion Tool
+                        </a>
+                        <a href="{{ url_for('recycling_centers') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-map-marker-alt me-2"></i> Find Recycling Centers
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Reset the checklist when the page loads
+        const checkboxes = document.querySelectorAll('.form-check-input');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+    });
+</script>
+{% endblock %}

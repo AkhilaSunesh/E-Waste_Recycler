@@ -1,0 +1,235 @@
+{% extends 'layout.html' %}
+
+{% block title %}Recycling Centers{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<style>
+    #map {
+        height: 500px;
+        border-radius: 5px;
+    }
+    .center-card {
+        cursor: pointer;
+    }
+    .center-card:hover {
+        border-color: var(--bs-primary);
+    }
+    .center-card.active {
+        border-color: var(--bs-primary);
+        border-width: 2px;
+    }
+    .center-list {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">E-Waste Recycling Centers</h1>
+            <p class="lead">
+                Find responsible e-waste recycling centers near you to properly dispose of your electronic devices.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-search-location me-2"></i> Find Centers Near You</h5>
+                </div>
+                <div class="card-body">
+                    <p>Allow location access or enter your location to find nearby recycling centers:</p>
+                    
+                    <button id="btn-use-location" class="btn btn-outline-primary mb-3 w-100">
+                        <i class="fas fa-location-arrow me-2"></i> Use My Location
+                    </button>
+                    
+                    <div class="text-center my-2">
+                        <span>Or</span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="address-input" class="form-label">Enter Address or Zip Code</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="address-input" placeholder="Enter location...">
+                            <button class="btn btn-primary" id="btn-search-address">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="radius-input" class="form-label">Search Radius (km)</label>
+                        <input type="range" class="form-range" id="radius-input" min="1" max="50" value="10">
+                        <div class="d-flex justify-content-between">
+                            <span>1 km</span>
+                            <span id="radius-value">10 km</span>
+                            <span>50 km</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i> Why Recycle E-Waste?</h5>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Prevents toxic materials from entering landfills</li>
+                        <li>Recovers valuable metals and materials</li>
+                        <li>Reduces environmental impact of electronic manufacturing</li>
+                        <li>Many components can be reused in new products</li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="{{ url_for('education') }}" class="btn btn-outline-success btn-sm">
+                            <i class="fas fa-book me-1"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body p-2">
+                    <div id="map"></div>
+                </div>
+            </div>
+            
+            <div id="centers-container" class="d-none">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i> Nearby Recycling Centers</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="center-list" class="center-list list-group list-group-flush">
+                            <!-- Centers will be listed here dynamically -->
+                            <div class="text-center py-4 text-muted">
+                                <i class="fas fa-spinner fa-spin fa-2x mb-3"></i>
+                                <p>Searching for recycling centers...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="no-centers-message" class="d-none">
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>No recycling centers found in your area.</strong> Try increasing the search radius or entering a different location.
+                </div>
+            </div>
+            
+            <div id="location-error" class="d-none">
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    <strong>Unable to access your location.</strong> Please make sure location services are enabled or enter your address manually.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="selected-center-details" class="row mb-4 d-none">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0" id="center-detail-name">
+                        <i class="fas fa-recycle me-2"></i> Recycling Center Details
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Contact Information</h5>
+                            <address id="center-detail-address">
+                                <i class="fas fa-map-marker-alt me-2"></i> Address will appear here<br>
+                                <i class="fas fa-phone me-2"></i> <span id="center-detail-phone">Phone number</span><br>
+                                <i class="fas fa-globe me-2"></i> <a id="center-detail-website" href="#" target="_blank">Website</a>
+                            </address>
+                            
+                            <h5 class="mt-4">Hours of Operation</h5>
+                            <p id="center-detail-hours">Hours will appear here</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Accepted Materials</h5>
+                            <p id="center-detail-materials">List of accepted materials will appear here</p>
+                            
+                            <h5 class="mt-4">Distance</h5>
+                            <p id="center-detail-distance">Distance will appear here</p>
+                            
+                            <div class="mt-4">
+                                <a id="center-detail-directions" href="#" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-directions me-2"></i> Get Directions
+                                </a>
+                                <a id="center-detail-share" href="#" class="btn btn-outline-secondary ms-2">
+                                    <i class="fas fa-share-alt me-2"></i> Share
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i> Before You Recycle</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-trash-alt text-danger fa-2x me-3"></i>
+                                </div>
+                                <div>
+                                    <h5>Remove Personal Data</h5>
+                                    <p>Ensure all personal data is securely deleted before recycling your device.</p>
+                                    <a href="{{ url_for('secure_deletion') }}" class="btn btn-sm btn-outline-danger">Secure Deletion Tool</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-battery-full text-warning fa-2x me-3"></i>
+                                </div>
+                                <div>
+                                    <h5>Remove Batteries</h5>
+                                    <p>If possible, remove batteries from devices before recycling, as they may need special handling.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-box text-success fa-2x me-3"></i>
+                                </div>
+                                <div>
+                                    <h5>Check Acceptance</h5>
+                                    <p>Call ahead to verify the center accepts your specific type of electronic device.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}
