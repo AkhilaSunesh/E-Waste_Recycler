@@ -1,19 +1,23 @@
 from dotenv import load_dotenv
 load_dotenv()
+import os
 import openai
+from openai import OpenAI  # ✅ NEW
 from flask import render_template, request, jsonify, redirect, url_for, flash, send_file
 from app import app, db
 from models import DeletionCertificate, RecyclingCenter
 from secure_delete import secure_delete_file, secure_delete_folder
 from certificate_generator import generate_certificate
 from recycling_centers import find_nearby_centers
-import os
 import logging
 import json
 import uuid
 from datetime import datetime
 import io
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI()  # ✅ Fixed
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -26,29 +30,22 @@ def secure_deletion():
 def api_secure_delete():
     try:
         data = request.get_json()
-        
-        # This is a simulation since we can't actually delete files from user's devices
-        # In a real implementation, this would be handled by a desktop app component
         file_paths = data.get('file_paths', [])
         method = data.get('method', 'standard')
         passes = int(data.get('passes', 1))
         device_type = data.get('device_type', 'Unknown Device')
-        
-        # Simulate deletion
+
         deleted_files = []
         for path in file_paths:
-            # In a real implementation, these would actually delete files
             if os.path.isdir(path):
                 secure_delete_folder(path, method, passes)
             else:
                 secure_delete_file(path, method, passes)
             deleted_files.append(path)
-        
-        # Generate certificate
+
         certificate_id = str(uuid.uuid4())
         verification_code = str(uuid.uuid4())[:8]
-        
-        # Save certificate to database
+
         certificate = DeletionCertificate(
             certificate_id=certificate_id,
             device_type=device_type,
@@ -58,7 +55,7 @@ def api_secure_delete():
         )
         db.session.add(certificate)
         db.session.commit()
-        
+
         return jsonify({
             'success': True,
             'deleted_files': deleted_files,
@@ -79,10 +76,7 @@ def view_certificate(certificate_id):
 @app.route('/api/download-certificate/<certificate_id>')
 def download_certificate(certificate_id):
     certificate = DeletionCertificate.query.filter_by(certificate_id=certificate_id).first_or_404()
-    
-    # Generate PDF certificate
     pdf_bytes = generate_certificate(certificate)
-    
     return send_file(
         io.BytesIO(pdf_bytes),
         mimetype='application/pdf',
@@ -100,11 +94,10 @@ def api_recycling_centers():
         data = request.get_json()
         latitude = data.get('latitude')
         longitude = data.get('longitude')
-        radius = data.get('radius', 10)  # Default 10km
-        
-        # Find nearby recycling centers
+        radius = data.get('radius', 10)
+
         centers = find_nearby_centers(latitude, longitude, radius)
-        
+
         return jsonify({
             'success': True,
             'centers': centers
@@ -128,43 +121,36 @@ def guide():
 def verify_certificate():
     certificate_id = request.form.get('certificate_id')
     verification_code = request.form.get('verification_code')
-    
+
     certificate = DeletionCertificate.query.filter_by(
         certificate_id=certificate_id,
         verification_code=verification_code
     ).first()
-    
+
     if certificate:
         return redirect(url_for('view_certificate', certificate_id=certificate_id))
     else:
         flash('Invalid certificate ID or verification code', 'danger')
         return redirect(url_for('index'))
 
-
-@app.route('/assistant')
-def assistant():
-    return render_template('assistant.html')
-
-
 @app.route('/api/assistant', methods=['POST'])
 def assistant_api():
     try:
         user_message = request.json.get('message')
 
-        # Optional: tailor the prompt to include info about your services
         messages = [
             {"role": "system", "content": "You are a friendly AI assistant helping users find e-waste recycling centers and understand secure data deletion."},
             {"role": "user", "content": user_message}
         ]
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages,
             temperature=0.7,
             max_tokens=200
         )
 
-        reply = response['choices'][0]['message']['content'].strip()
+        reply = response.choices[0].message.content.strip()
         return jsonify({"response": reply})
 
     except Exception as e:
