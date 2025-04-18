@@ -1,6 +1,7 @@
+from dotenv import load_dotenv
+load_dotenv()
 import os
 import logging
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase

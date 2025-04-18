@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+import openai
 from flask import render_template, request, jsonify, redirect, url_for, flash, send_file
 from app import app, db
 from models import DeletionCertificate, RecyclingCenter
@@ -10,7 +13,7 @@ import json
 import uuid
 from datetime import datetime
 import io
-
+openai.api_key = os.getenv("OPENAI_API_KEY")
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -136,3 +139,33 @@ def verify_certificate():
     else:
         flash('Invalid certificate ID or verification code', 'danger')
         return redirect(url_for('index'))
+
+
+@app.route('/assistant')
+def assistant():
+    return render_template('assistant.html')
+
+
+@app.route('/api/assistant', methods=['POST'])
+def assistant_api():
+    try:
+        user_message = request.json.get('message')
+
+        # Optional: tailor the prompt to include info about your services
+        messages = [
+            {"role": "system", "content": "You are a friendly AI assistant helping users find e-waste recycling centers and understand secure data deletion."},
+            {"role": "user", "content": user_message}
+        ]
+
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages,
+            temperature=0.7,
+            max_tokens=200
+        )
+
+        reply = response['choices'][0]['message']['content'].strip()
+        return jsonify({"response": reply})
+
+    except Exception as e:
+        return jsonify({"response": f"Error: {str(e)}"}), 500
