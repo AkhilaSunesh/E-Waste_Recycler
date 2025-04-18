@@ -1,16 +1,26 @@
-/* Custom CSS for the E-Waste Recycler application */
-
-/* Ensure dark theme styles are applied throughout */
-[data-bs-theme=dark] {
-    --bs-body-bg: #212529;
-    --bs-body-color: #dee2e6;
+/* Theme Variables */
+[data-bs-theme="light"] {
+    --bs-body-bg: #eae4d2;
+    --bs-body-color: #17726d;
+    --bs-primary: #17726d;
+    --bs-secondary: #b2b08f;
+    --bs-dark: #b2b08f;
+    --bs-surface-bg: #ffffff;
 }
 
-/* Utility class for text truncation */
-.text-truncate-custom {
-    white-space: nowrap;
-    overflow: hidden;
-    text-ellipsis: ellipsis;
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0f3f3c;
+    --bs-body-color: #eae4d2;
+    --bs-primary: #17726d;
+    --bs-secondary: #b2b08f;
+    --bs-dark: #0a2e2b;
+    --bs-surface-bg: #1d3c3a;
+}
+
+/* Apply background and text globally */
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
 }
 
 /* Map styles */
@@ -19,25 +29,25 @@
     z-index: 1;
 }
 
-/* Custom marker styles for the map */
+/* Marker styles */
 .user-location-marker i {
-    color: #0d6efd;
+    color: var(--bs-primary);
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
 .center-marker i {
-    color: #198754;
+    color: var(--bs-secondary);
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
-/* Active state for recycling center cards */
+/* Card state */
 .center-card.active {
     border-color: var(--bs-primary);
     border-width: 2px;
-    background-color: rgba(13, 110, 253, 0.05);
+    background-color: rgba(23, 114, 109, 0.05);
 }
 
-/* Secure deletion method card styles */
+/* Method card interactions */
 .method-card {
     cursor: pointer;
     transition: all 0.2s ease;
@@ -50,22 +60,22 @@
 
 .method-card.selected {
     border: 2px solid var(--bs-primary);
-    background-color: rgba(13, 110, 253, 0.05);
+    background-color: rgba(23, 114, 109, 0.05);
 }
 
-/* Certificate styles */
+/* Certificate content */
 #certificate-content {
-    background-color: #ffffff;
-    color: #212529;
-    position: relative;
+    background-color: var(--bs-surface-bg);
+    color: var(--bs-body-color);
     padding: 2rem;
+    position: relative;
 }
 
 #qrcode img {
-    background-color: white;
+    background-color: var(--bs-surface-bg);
 }
 
-/* Custom scrollbar for file list and center list */
+/* Scrollbar */
 .center-list, #file-list {
     scrollbar-width: thin;
     scrollbar-color: var(--bs-secondary) var(--bs-dark);
@@ -84,7 +94,7 @@
     border-radius: 20px;
 }
 
-/* Educational page timeline styling */
+/* Timeline */
 .timeline-item {
     position: relative;
     padding-left: 40px;
@@ -112,13 +122,13 @@
     background-color: var(--bs-primary);
 }
 
-/* Guide page styles */
+/* Accordion */
 .accordion-button:not(.collapsed) {
-    background-color: rgba(13, 110, 253, 0.1);
+    background-color: rgba(23, 114, 109, 0.1);
     color: var(--bs-primary);
 }
 
-/* Step numbers for how it works section */
+/* Step number badge */
 .step-number {
     width: 40px;
     height: 40px;
@@ -127,47 +137,44 @@
     justify-content: center;
     border-radius: 50%;
     background-color: var(--bs-primary);
-    color: white;
+    color: #fff;
     font-weight: bold;
     margin-right: 15px;
 }
 
-/* Print styles for certificate */
+/* Print */
 @media print {
     body * {
         visibility: hidden;
     }
-    
+
     #certificate-content, #certificate-content * {
         visibility: visible;
     }
-    
+
     #certificate-content {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
     }
-    
+
     .no-print {
         display: none !important;
     }
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
-    /* Smaller maps on mobile */
     #map {
         height: 300px;
     }
-    
-    /* Adjust padding for mobile */
+
     .container {
         padding-left: 15px;
         padding-right: 15px;
     }
-    
-    /* Full width buttons on mobile */
+
     .btn-responsive {
         width: 100%;
         margin-bottom: 10px;

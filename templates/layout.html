@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,7 @@
     {% block styles %}{% endblock %}
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -25,6 +26,13 @@
                 <i class="fas fa-recycle text-success me-2"></i>
                 E-Waste Recycler
             </a>
+            <!-- Fancy Theme Toggle Button -->
+        <div class="ms-3 mt-2">
+            <button id="themeToggle" class="btn btn-outline-light rounded-circle" style="width: 40px; height: 40px;">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+        </div>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -115,9 +123,33 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JavaScript Bundle -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleBtn = document.getElementById("themeToggle");
+            const icon = document.getElementById("themeIcon");
     
+            function setTheme(theme) {
+                document.body.setAttribute("data-bs-theme", theme);
+                localStorage.setItem("theme", theme);
+                icon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+            }
+    
+            // Initialize theme
+            const savedTheme = localStorage.getItem("theme") || "light";
+            setTheme(savedTheme);
+    
+            toggleBtn.addEventListener("click", function () {
+                const currentTheme = document.body.getAttribute("data-bs-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+                setTheme(newTheme);
+            });
+        });
+    </script>
+    
+
     <!-- Additional scripts -->
     {% block scripts %}{% endblock %}
 </body>

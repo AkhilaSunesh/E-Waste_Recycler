@@ -79,16 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Handler for adding files
-    addFilesBtn.addEventListener('click', function() {
-        // Simulate file selection (in a real app, this would open a file picker)
-        simulateFileSelection(false);
-    });
-    
-    // Handler for adding a folder
-    addFolderBtn.addEventListener('click', function() {
-        // Simulate folder selection (in a real app, this would open a folder picker)
-        simulateFileSelection(true);
-    });
+    // Handler for adding files/folders in either mode
+addFilesBtn.addEventListener('click', () => handleFileSelection(false));
+addFolderBtn.addEventListener('click', () => handleFileSelection(true));
+
     
     // Handler for the step 2 previous button
     btnStep2Prev.addEventListener('click', function() {
@@ -189,32 +183,78 @@ document.addEventListener('DOMContentLoaded', function() {
         showStep(0);
     });
     
-    // Function to simulate file selection
-    function simulateFileSelection(isFolder) {
-        const fileTypes = ['Document', 'Spreadsheet', 'Presentation', 'Image', 'Video', 'Audio', 'Archive', 'Database'];
-        const folderTypes = ['Documents', 'Pictures', 'Videos', 'Music', 'Downloads', 'Desktop', 'Projects', 'Backups'];
-        
-        let path;
-        if (isFolder) {
-            const folderType = folderTypes[Math.floor(Math.random() * folderTypes.length)];
-            path = `/Users/username/${folderType}`;
-        } else {
-            const fileType = fileTypes[Math.floor(Math.random() * fileTypes.length)];
-            const fileId = Math.floor(Math.random() * 1000);
-            path = `/Users/username/Documents/${fileType}_${fileId}.${fileType.toLowerCase()}`;
-        }
-        
-        // Add to the selected files list
-        selectedFiles.push({
-            path: path,
-            isFolder: isFolder,
-            size: isFolder ? 'Folder' : `${Math.floor(Math.random() * 100) + 1} MB`
-        });
-        
-        // Update the UI
-        updateFileList();
-    }
     
+
+document.getElementById("modeToggle").addEventListener("change", () => {
+    const modeLabel = document.querySelector("label[for='modeToggle']");
+    modeLabel.textContent = document.getElementById("modeToggle").checked 
+        ? "Simulation Mode" 
+        : "Real Mode";
+});
+
+async function handleFileSelection(isFolder) {
+    const isSimulation = document.getElementById("modeToggle").checked;
+    if (isSimulation) {
+        simulateFileSelection(isFolder);
+    } else {
+        await realFileSelection(isFolder);
+    }
+}
+
+// Real file selection (uses File System Access API)
+async function realFileSelection(isFolder) {
+    try {
+        let handles = [];
+
+        if (isFolder) {
+            const dirHandle = await window.showDirectoryPicker();
+            handles.push(dirHandle);
+        } else {
+            handles = await window.showOpenFilePicker({
+                multiple: true
+            });
+        }
+
+        for (const handle of handles) {
+            const isFolderType = handle.kind === 'directory';
+            selectedFiles.push({
+                path: handle.name,
+                isFolder: isFolderType,
+                handle: handle,
+                size: isFolderType ? 'Folder' : 'Unknown Size'
+            });
+        }
+
+        updateFileList();
+    } catch (err) {
+        console.error('File/Folder selection cancelled or failed:', err);
+    }
+}
+
+// Simulated file/folder selection
+function simulateFileSelection(isFolder) {
+    const fileTypes = ['Document', 'Spreadsheet', 'Presentation', 'Image', 'Video', 'Audio', 'Archive', 'Database'];
+    const folderTypes = ['Documents', 'Pictures', 'Videos', 'Music', 'Downloads', 'Desktop', 'Projects', 'Backups'];
+
+    let path;
+    if (isFolder) {
+        const folderType = folderTypes[Math.floor(Math.random() * folderTypes.length)];
+        path = `/Users/username/${folderType}`;
+    } else {
+        const fileType = fileTypes[Math.floor(Math.random() * fileTypes.length)];
+        const fileId = Math.floor(Math.random() * 1000);
+        path = `/Users/username/Documents/${fileType}_${fileId}.${fileType.toLowerCase()}`;
+    }
+
+    selectedFiles.push({
+        path: path,
+        isFolder: isFolder,
+        size: isFolder ? 'Folder' : `${Math.floor(Math.random() * 100) + 1} MB`
+    });
+
+    updateFileList();
+}
+
     // Function to update the file list in the UI
     function updateFileList() {
         if (selectedFiles.length === 0) {
